@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feel Events &amp; Entertainment</title>
+<meta name="description" content="Supreme Thursday and Sunset Sunday at Barcode Hatfield, every week. Free entry. Table bookings 073 390 4343.">
+<meta property="og:title" content="Feel Events &amp; Entertainment">
+<meta property="og:description" content="Supreme Thursday and Sunset Sunday at Barcode Hatfield. Free entry. Book a table: 073 390 4343.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+/* Streetwear-store grid: black strip, bracket logo, two big weekly panels, a flyer grid, a news list, a table-booking band. */
+:root {
+  --bg: #FFFFFF; --fg: #0A0A0A; --muted: #6E6E6E; --line: #E7E7E7; --soft: #F3F3F3;
+  --strip: #0A0A0A; --strip-fg: #FFFFFF; --hot: #FF5B1F;
+  --f-display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #0B0B0B; --fg: #F4F4F4; --muted: #9A9A9A; --line: #232323; --soft: #161616;
+  --strip: #F4F4F4; --strip-fg: #0B0B0B; --hot: #FF6A33; color-scheme: dark; } }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 15px/1.55 var(--f-body); }
+img { max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--hot); outline-offset: 2px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.up { text-transform: uppercase; letter-spacing: .06em; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; line-height: 1; margin: 0; text-wrap: balance; }
+.strip { background: var(--strip); color: var(--strip-fg); font-size: 12px; font-weight: 600; text-align: center; padding-top: env(safe-area-inset-top, 0px); }
+.strip .wrap { padding-block: 9px; }
+header.top { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.logo b { font: 400 20px/1 var(--f-display); letter-spacing: .04em; }
+.logo small { font-size: 10px; font-weight: 600; letter-spacing: .16em; color: var(--muted); }
+nav.links { display: flex; gap: 26px; font-size: 13px; font-weight: 600; }
+nav.links a { text-decoration: none; }
+nav.links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 20px; font: 700 12px/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--fg); background: var(--fg); color: var(--bg); cursor: pointer; }
+.btn.line { background: transparent; color: var(--fg); }
+.btn.sm { padding: 9px 12px; font-size: 11px; }
+.btn:hover { opacity: .85; }
+.sec { padding-block: 56px; }
+.sec-head { margin-bottom: 22px; }
+.sec-head h2 { font-size: clamp(26px, 3.4vw, 38px); }
+.sec-head p { margin: 6px 0 0; color: var(--muted); }
+
+.weekly { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.panel { position: relative; min-height: 520px; background: var(--strip); color: var(--strip-fg); display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+.panel img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
+.panel.has-flyer .info { background: linear-gradient(transparent, rgba(0,0,0,.85) 38%); color: #fff; }
+.panel .info { position: relative; padding: 28px; display: grid; gap: 10px; pointer-events: none; }
+.panel .info > * { pointer-events: auto; }
+.panel .when { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
+.panel h2 { font-size: clamp(40px, 5.6vw, 72px); }
+.panel .note { margin: 0; max-width: 46ch; opacity: .85; white-space: pre-line; }
+.panel .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.panel.has-flyer .btn { background: #fff; color: #0A0A0A; border-color: #fff; }
+.panel.has-flyer .btn.line { background: transparent; color: #fff; }
+.panel:not(.has-flyer) .btn { background: var(--strip-fg); color: var(--strip); border-color: var(--strip-fg); }
+.panel:not(.has-flyer) .btn.line { background: transparent; color: var(--strip-fg); }
+.free { display: inline-block; background: var(--hot); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; padding: 6px 9px; text-transform: uppercase; }
+
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 14px; }
+.card { min-width: 0; display: grid; gap: 10px; align-content: start; }
+.card .art { aspect-ratio: 4 / 5; max-width: 100%; background: var(--soft); position: relative; overflow: hidden; }
+.card .art img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; transition: transform .3s ease; }
+.card .art:hover img { transform: scale(1.03); }
+.card .art .ph { position: absolute; inset: 0; display: grid; place-content: center; padding: 18px; text-align: center; font: 400 22px/1.05 var(--f-display); text-transform: uppercase; }
+.card .art .free { position: absolute; top: 10px; left: 10px; }
+.card .lbl { font-size: 11px; font-weight: 600; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+.card h3 { font: 700 15px/1.25 var(--f-body); letter-spacing: .03em; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; white-space: pre-line; }
+.empty { border: 1px dashed var(--line); padding: 36px 20px; text-align: center; color: var(--muted); }
+
+.news { display: grid; border-top: 1px solid var(--fg); }
+.item { display: grid; grid-template-columns: 130px 1fr auto; gap: 20px; padding-block: 22px; border-bottom: 1px solid var(--line); align-items: start; }
+.item .d { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; padding-top: 3px; }
+.item h3 { font-size: 20px; margin-bottom: 8px; }
+.item p { margin: 0; white-space: pre-line; max-width: 70ch; }
+.item .thumb { width: 120px; aspect-ratio: 4 / 5; object-fit: cover; cursor: zoom-in; display: block; }
+.item .body { min-width: 0; }
+
+.tables { background: var(--strip); color: var(--strip-fg); }
+.tables .wrap { padding-block: 56px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+.tables h2 { font-size: clamp(30px, 4.5vw, 56px); }
+.tables p { margin: 10px 0 0; opacity: .75; max-width: 52ch; }
+.tables .num { font: 400 clamp(26px, 3.4vw, 40px)/1 var(--f-display); letter-spacing: .02em; text-decoration: none; }
+.tables .acts { display: grid; gap: 10px; justify-items: start; }
+.tables .btn { background: var(--strip-fg); color: var(--strip); border-color: var(--strip-fg); }
+.tables .btn.line { background: transparent; color: var(--strip-fg); }
+footer { border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+footer .wrap { padding-block: 24px max(24px, env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+.overlay { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.88); display: grid; place-items: center; padding: 16px; }
+.overlay img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.overlay button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: 14px; background: #fff; color: #000; border: 0; width: 42px; height: 42px; font-size: 22px; cursor: pointer; }
+
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) {
+  nav.links { display: none; }
+  .weekly { grid-template-columns: 1fr; }
+  .panel { min-height: 440px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 22px 10px; }
+  .item { grid-template-columns: 1fr; gap: 8px; }
+  .item .thumb { width: 100%; max-width: 280px; }
+  .tables .wrap { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="strip up"><div class="wrap">Free entry · Supreme Thursday &amp; Sunset Sunday · Barcode Hatfield</div></div>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#weekly"><b>[ FEEL ]</b><small>EVENTS &amp; ENTERTAINMENT</small></a>
+  <nav class="links up"><a href="#weekly">Weekly</a><a href="#events">Events</a><a href="#news">News</a><a href="#tables">Tables</a></nav>
+  <a class="btn sm" href="#tables">Book a table</a>
+</div></header>
+
+<main>
+  <section class="sec" id="weekly"><div class="wrap">
+    <div class="sec-head"><h2>Every week</h2><p>Two nights, one venue, always free to get in.</p></div>
+    <div class="weekly" id="weeklyList"></div>
+  </div></section>
+
+  <section class="sec" id="events" style="padding-top:8px"><div class="wrap">
+    <div class="sec-head"><h2>Special events</h2><p>One-off shows and parties. Tap a flyer to see it full size.</p></div>
+    <div id="eventList"></div>
+  </div></section>
+
+  <section class="sec" id="news" style="padding-top:8px"><div class="wrap">
+    <div class="sec-head"><h2>Announcements</h2></div>
+    <div id="newsList"></div>
+  </div></section>
+</main>
+
+<section class="tables" id="tables"><div class="wrap">
+  <div><h2>Book a table</h2><p>Entrance is free on Supreme Thursday and Sunset Sunday. To reserve a table, call or WhatsApp us.</p></div>
+  <div class="acts">
+    <a class="num" href="tel:+27733904343">073 390 4343</a>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn" id="waLink" href="https://wa.me/27733904343" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn line" href="tel:+27733904343">Call</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap up"><span>© <span id="yr"></span> Feel Events &amp; Entertainment</span><span>Barcode Hatfield · Pretoria</span></div></footer>
+
+<script>
+const VENUE = "Barcode Hatfield";
+const WHATSAPP = "https://wa.me/27733904343?text=" + encodeURIComponent("Hi, I'd like to book a table.");
+const MAPS = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Barcode Hatfield Pretoria");
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+const parseDate = s => { const [y, m, d] = String(s).slice(0, 10).split("-").map(Number); return new Date(y, m - 1, d); };
+const fmt = d => `${DAYS[d.getDay()].slice(0, 3)} ${d.getDate()} ${MON[d.getMonth()]}`;
+function nextLabel(day) {
+  const dow = DAYS.indexOf(day); if (dow < 0) return "";
+  const t = today(), diff = (dow - t.getDay() + 7) % 7;
+  if (diff === 0) return "Tonight";
+  if (diff === 1) return "Tomorrow";
+  const d = new Date(t); d.setDate(t.getDate() + diff); return "Next: " + fmt(d);
+}
+const load = path => fetch(path, { cache: "no-store" }).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+
+function weeklyPanel(w) {
+  const next = nextLabel(w.day);
+  return `<article class="panel${w.flyer ? " has-flyer" : ""}">
+    ${w.flyer ? `<img class="bg" src="${esc(w.flyer)}" alt="${esc(w.name)} flyer" data-zoom>` : ""}
+    <div class="info">
+      <div class="when">Every ${esc(w.day)}${w.time ? " · " + esc(w.time) : ""}${next ? " · " + next : ""}</div>
+      <h2>${esc(w.name)}</h2>
+      <div class="row"><span class="free">Free entry</span><span class="up" style="font-size:12px;font-weight:600">${VENUE}</span></div>
+      ${w.note ? `<p class="note">${esc(w.note)}</p>` : ""}
+      <div class="row"><a class="btn" href="${WHATSAPP}" target="_blank" rel="noopener">Book a table</a><a class="btn line" href="${MAPS}" target="_blank" rel="noopener">Directions</a></div>
+    </div>
+  </article>`;
+}
+
+function eventCard(e) {
+  const d = parseDate(e.date), free = /free/i.test(e.entry || "");
+  return `<article class="card">
+    <div class="art">${e.flyer ? `<img src="${esc(e.flyer)}" alt="${esc(e.title)} flyer" loading="lazy" data-zoom>` : `<div class="ph">${esc(e.title)}</div>`}
+      ${free ? `<span class="free">Free entry</span>` : ""}</div>
+    <div class="lbl">${fmt(d)}${e.time ? " · " + esc(e.time) : ""}</div>
+    <h3 class="up">${esc(e.title)}</h3>
+    <p>${esc(e.venue || VENUE)}${e.entry && !free ? " · " + esc(e.entry) : ""}</p>
+    ${e.details ? `<p>${esc(e.details)}</p>` : ""}
+  </article>`;
+}
+
+function newsItem(n) {
+  const d = parseDate(n.date);
+  return `<article class="item">
+    <div class="d">${d.getDate()} ${MON[d.getMonth()]} ${d.getFullYear()}</div>
+    <div class="body"><h3>${esc(n.title)}</h3><p>${esc(n.message)}</p></div>
+    ${n.flyer ? `<img class="thumb" src="${esc(n.flyer)}" alt="${esc(n.title)}" loading="lazy" data-zoom>` : "<span></span>"}
+  </article>`;
+}
+
+(async () => {
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  document.querySelectorAll('a[href^="https://wa.me"]').forEach(a => a.href = WHATSAPP);
+  const [weekly, events, news] = await Promise.all([load("data/weekly.json"), load("data/events.json"), load("data/news.json")]);
+
+  const nights = weekly.nights || [];
+  document.getElementById("weeklyList").innerHTML = nights.map(weeklyPanel).join("");
+
+  const upcoming = (events.events || []).filter(e => e.date && parseDate(e.date) >= today())
+    .sort((a, b) => String(a.date).localeCompare(String(b.date)));
+  document.getElementById("eventList").innerHTML = upcoming.length
+    ? `<div class="grid">${upcoming.map(eventCard).join("")}</div>`
+    : `<div class="empty up">No special events right now. Check back soon.</div>`;
+
+  const posts = (news.posts || []).filter(n => n.date).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  document.getElementById("newsList").innerHTML = posts.length
+    ? `<div class="news">${posts.map(newsItem).join("")}</div>`
+    : `<div class="empty up">No announcements yet.</div>`;
+})();
+
+document.addEventListener("click", e => {
+  const z = e.target.closest("[data-zoom]"); if (!z) return;
+  const o = document.createElement("div");
+  o.className = "overlay";
+  o.innerHTML = `<button aria-label="Close">×</button><img alt="Flyer">`;
+  o.querySelector("img").src = z.src;
+  o.addEventListener("click", ev => { if (ev.target === o || ev.target.tagName === "BUTTON") o.remove(); });
+  document.body.append(o);
+  o.querySelector("button").focus();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelector(".overlay")?.remove(); });
+</script>
+</body>
+</html>

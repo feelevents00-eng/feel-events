@@ -1,0 +1,75 @@
+# Admin page settings (Decap CMS).
+backend:
+  name: github
+  repo: feelevents00-eng/feel-events
+  branch: main
+  commit_messages:
+    update: "Update {{slug}}"
+    uploadMedia: "Upload flyer {{path}}"
+    deleteMedia: "Delete flyer {{path}}"
+
+# Lets the admin page work against your computer's copy while testing (npx decap-server).
+local_backend: true
+
+media_folder: images/uploads
+public_folder: /images/uploads
+locale: en
+
+collections:
+  - name: content
+    label: Website
+    editor:
+      preview: false
+    files:
+      - name: events
+        label: Special events
+        file: data/events.json
+        description: One-off events. They disappear from the website the day after their date.
+        fields:
+          - name: events
+            label: Events
+            label_singular: event
+            widget: list
+            add_to_top: true
+            summary: "{{fields.date}} · {{fields.title}}"
+            fields:
+              - { name: title, label: Event name, widget: string }
+              - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD MMM YYYY", time_format: false }
+              - { name: time, label: Time, widget: string, required: false, hint: "For example: 20:00 till late" }
+              - { name: venue, label: Venue, widget: string, default: "Barcode Hatfield" }
+              - { name: entry, label: Entry, widget: string, default: "Free entry", hint: "Free entry, or a price such as R100" }
+              - { name: details, label: Details, widget: text, required: false, hint: "Line-up, dress code, specials" }
+              - { name: flyer, label: Flyer, widget: image, required: false, choose_url: false }
+
+      - name: news
+        label: Announcements
+        file: data/news.json
+        fields:
+          - name: posts
+            label: Announcements
+            label_singular: announcement
+            widget: list
+            add_to_top: true
+            summary: "{{fields.date}} · {{fields.title}}"
+            fields:
+              - { name: title, label: Headline, widget: string }
+              - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD MMM YYYY", time_format: false }
+              - { name: message, label: Message, widget: text }
+              - { name: flyer, label: Picture or flyer, widget: image, required: false, choose_url: false }
+
+      - name: weekly
+        label: Weekly nights
+        file: data/weekly.json
+        description: Supreme Thursday and Sunset Sunday. Swap the flyer each week here.
+        fields:
+          - name: nights
+            label: Nights
+            label_singular: night
+            widget: list
+            summary: "{{fields.name}} ({{fields.day}})"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: day, label: Day, widget: select, options: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] }
+              - { name: time, label: Time, widget: string, required: false, hint: "For example: 20:00 till late" }
+              - { name: note, label: Short note, widget: text, required: false }
+              - { name: flyer, label: This week's flyer, widget: image, required: false, choose_url: false }

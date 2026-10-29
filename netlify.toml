@@ -1,0 +1,9 @@
+# No build step: Netlify serves the files as they are.
+[build]
+  publish = "."
+
+# Always fetch the latest event data so new posts show straight away.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "no-cache"
