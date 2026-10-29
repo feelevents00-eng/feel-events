@@ -1,6 +1,18 @@
 {
   "nights": [
-    { "name": "Supreme Thursday", "day": "Thursday", "time": "", "note": "", "flyer": "" },
-    { "name": "Sunset Sunday", "day": "Sunday", "time": "", "note": "", "flyer": "" }
+    {
+      "name": "Supreme Thursday",
+      "day": "Thursday",
+      "time": "",
+      "note": "",
+      "flyer": "/images/uploads/unnamed.png"
+    },
+    {
+      "name": "Sunset Sunday",
+      "day": "Sunday",
+      "time": "",
+      "note": "",
+      "flyer": "/images/uploads/9a45bff4-38a9-41ed-822e-3465ef9bf2f9.jpg"
+    }
   ]
 }

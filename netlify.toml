@@ -8,6 +8,12 @@
   [headers.values]
     Cache-Control = "no-cache"
 
+# Tell phones the app settings file is an app manifest.
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
 # The app's offline helper must always be checked for updates.
 [[headers]]
   for = "/sw.js"
