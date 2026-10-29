@@ -9,6 +9,13 @@
 <meta property="og:description" content="Supreme Thursday and Sunset Sunday at Barcode Hatfield. Free entry. Book a table: 073 390 4343.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" href="/icons/favicon.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Feel Events">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap">
@@ -103,6 +110,12 @@ footer .wrap { padding-block: 24px max(24px, env(safe-area-inset-bottom, 0px)); 
 .overlay img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .overlay button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: 14px; background: #fff; color: #000; border: 0; width: 42px; height: 42px; font-size: 22px; cursor: pointer; }
 
+.install { background: var(--hot); color: #fff; font-size: 13px; font-weight: 600; }
+.install .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.install .btn { background: #fff; color: #0A0A0A; border-color: #fff; flex-shrink: 0; }
+.install .x { background: none; border: 0; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; padding: 4px 6px; }
+.install .acts { display: flex; align-items: center; gap: 6px; }
+
 @media (max-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px) {
   nav.links { display: none; }
@@ -123,6 +136,10 @@ footer .wrap { padding-block: 24px max(24px, env(safe-area-inset-bottom, 0px)); 
   <nav class="links up"><a href="#weekly">Weekly</a><a href="#events">Events</a><a href="#news">News</a><a href="#tables">Tables</a></nav>
   <a class="btn sm" href="#tables">Book a table</a>
 </div></header>
+<div class="install" id="install" hidden><div class="wrap">
+  <span id="installText">Get the Feel Events app on your home screen.</span>
+  <span class="acts"><button class="btn sm" id="installBtn" hidden>Install app</button><button class="x" id="installClose" aria-label="Dismiss">×</button></span>
+</div></div>
 
 <main>
   <section class="sec" id="weekly"><div class="wrap">
@@ -240,6 +257,23 @@ document.addEventListener("click", e => {
   o.querySelector("button").focus();
 });
 document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelector(".overlay")?.remove(); });
+
+/* ---------- App install ---------- */
+if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+(() => {
+  const bar = document.getElementById("install"), btn = document.getElementById("installBtn"), txt = document.getElementById("installText");
+  const installed = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  let dismissed = false;
+  try { dismissed = localStorage.getItem("feel-install-dismissed") === "1"; } catch {}
+  if (installed || dismissed) return;
+  document.getElementById("installClose").onclick = () => { bar.hidden = true; try { localStorage.setItem("feel-install-dismissed", "1"); } catch {} };
+  let prompt = null;
+  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); prompt = e; btn.hidden = false; bar.hidden = false; });
+  btn.onclick = async () => { if (!prompt) return; prompt.prompt(); await prompt.userChoice; prompt = null; bar.hidden = true; };
+  window.addEventListener("appinstalled", () => { bar.hidden = true; });
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (ios) { txt.textContent = "Install the app: tap the Share button, then “Add to Home Screen”."; bar.hidden = false; }
+})();
 </script>
 </body>
 </html>
