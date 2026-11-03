@@ -1,12 +1,13 @@
 {
   "events": [
     {
-      "venue": "Barcode Hatfield",
-      "entry": "Free entry",
-      "title": "HALLOWEEN PARTY",
-      "date": "2026-10-29",
-      "time": "14:00 - 02:00",
-      "flyer": "/images/uploads/41707378-bcf0-47cd-a79d-711baf59c285.png"
+      "venue": "TBC",
+      "entry": "TBC",
+      "title": "SUMMERTIME FEELS",
+      "date": "2026-11-28",
+      "time": "14:00 - 04:00",
+      "details": "LINE UP - LOADING \nDRESS CODE - SUMMER VIBES",
+      "flyer": "/images/uploads/d061ced1-c818-4d1f-b763-1864fde3ca7b.png"
     }
   ]
 }
